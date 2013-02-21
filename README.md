@@ -28,7 +28,7 @@ You will be building a single-user Rails application to allow one person to mana
 * When viewing an Actor, I must see a list of movies they have been in.
 * At a minimum, Actor must contain fields for name, date of birth, and gender.
 	* Only name and gender shall be mandatory.
-  * Name shall enforce uniqueness.
+	* Name shall enforce uniqueness.
 * When editing an Actor, I must be able to add to/remove from the set of movies that they have been in.
 
 ###Optional
