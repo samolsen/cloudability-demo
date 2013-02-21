@@ -16,10 +16,25 @@ describe "dvds/show" do
     rendered.should match(/MyText/)
     rendered.should match(/Asin/)
   end
+
+  def amazon_regex
+    /http:\/\/www\.amazon\.com/
+  end
   
   it 'renders Amazon link' do
     render
-    
-    rendered.should match(/http:\/\/www\.amazon\.com/)
+    rendered.should match(amazon_regex)
+  end
+  
+  it 'does not render Amazon link if no ASIN is nil' do
+    @dvd.asin = nil
+    render 
+    rendered.should_not match(amazon_regex)
+  end
+  
+  it 'does not render Amazon link if no ASIN is empty string' do
+    @dvd.asin = ''
+    render 
+    rendered.should_not match(amazon_regex)
   end
 end
