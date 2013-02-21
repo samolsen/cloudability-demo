@@ -11,5 +11,13 @@ require 'spec_helper'
 #   end
 # end
 describe DvdsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'Amazon URL' do
+    it 'builds an Amazon product URL given a DVD' do      
+      dvd = FactoryGirl.build(:dvd, :asin => 'ASIN-VALUE-HERE')
+    
+      helper.amazon_url_for(dvd).should eq('http://www.amazon.com/dp/ASIN-VALUE-HERE')
+    end
+  end
+  
 end

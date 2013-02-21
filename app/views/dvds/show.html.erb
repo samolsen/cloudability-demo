@@ -20,6 +20,8 @@
   <%= @dvd.asin %>
 </p>
 
+<p><%= link_to 'View on Amazon', amazon_url_for(@dvd) %></p>
+
 
 <%= link_to 'Edit', edit_dvd_path(@dvd) %> |
 <%= link_to 'Back', dvds_path %>

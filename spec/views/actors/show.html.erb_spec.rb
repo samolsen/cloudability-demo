@@ -14,4 +14,5 @@ describe "actors/show" do
     rendered.should match(/Name/)
     rendered.should match(/Gender/)
   end
+  
 end

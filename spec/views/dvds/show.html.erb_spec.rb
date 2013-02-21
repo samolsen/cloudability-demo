@@ -16,4 +16,10 @@ describe "dvds/show" do
     rendered.should match(/MyText/)
     rendered.should match(/Asin/)
   end
+  
+  it 'renders Amazon link' do
+    render
+    
+    rendered.should match(/http:\/\/www\.amazon\.com/)
+  end
 end
