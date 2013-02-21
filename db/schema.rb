@@ -11,12 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221043513) do
+ActiveRecord::Schema.define(:version => 20130221045842) do
 
   create_table "actors", :force => true do |t|
     t.string   "name"
     t.date     "birth_date"
     t.string   "gender"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "dvd_roles", :force => true do |t|
+    t.integer  "dvd_id"
+    t.integer  "actor_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

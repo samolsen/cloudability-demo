@@ -44,9 +44,17 @@ describe Dvd do
   
   it 'should have a unique name' do
     @dvd.save!
-    other_dvd = Dvd.new(:name => @dvd.name)
+    other_dvd = FactoryGirl.build(:dvd, :name => @dvd.name)
     other_dvd.errors_on(:name).should_not be_empty
   end
   
-  
+end
+
+describe Dvd, 'cast' do
+    
+  it 'should have actors' do
+    cast_size = rand(1..20)
+    FactoryGirl.create(:dvd_with_cast, :cast_size => cast_size).actors.length.should be cast_size
+  end
+    
 end

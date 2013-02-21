@@ -39,7 +39,7 @@ describe Actor do
   
   it 'should have a unique name' do
     @actor.save!
-    another_actor = Actor.new :name => @actor.name
+    another_actor = FactoryGirl.build(:actor, :name => @actor.name) 
     another_actor.errors_on(:name).should_not be_empty
   end
   
@@ -56,6 +56,11 @@ describe Actor do
   it 'should not accept an invalid gender' do
     @actor.gender = 'unknown'
     @actor.errors_on(:gender).should_not be_empty
+  end
+  
+  it 'should appear in DVDs' do
+    number_of_roles = rand(1..20)
+    FactoryGirl.create(:actor_with_roles, :number_of_roles => number_of_roles).dvds.length.should be number_of_roles
   end
   
 end

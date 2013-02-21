@@ -2,8 +2,19 @@
 
 FactoryGirl.define do
   factory :actor do
-    name "Bill Murray"
+    name { Faker::Name.name }
     birth_date "2013-02-20"
     gender "male"
+    
+    factory :actor_with_roles do 
+      ignore do
+        number_of_roles 10
+      end
+      
+      after(:create) do |actor, evaluator|
+        actor.dvds = FactoryGirl.create_list(:dvd, evaluator.number_of_roles)
+      end
+    end
+    
   end
 end
