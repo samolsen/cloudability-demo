@@ -1,4 +1,7 @@
 CloudabilityDemo::Application.routes.draw do
+  resources :directors
+
+
   resources :actors
 
 
