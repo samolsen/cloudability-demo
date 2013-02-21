@@ -56,5 +56,15 @@ describe Dvd, 'cast' do
     cast_size = rand(1..20)
     FactoryGirl.create(:dvd_with_cast, :cast_size => cast_size).actors.length.should be cast_size
   end
+  
+  it 'should remove actor associations on delete' do
+    cast_size = 10
+    dvd = FactoryGirl.create(:dvd_with_cast, :cast_size => cast_size)
+    
+    dvd_role_count = DvdRole.count
+    dvd.destroy
+    
+    DvdRole.count.should eq(dvd_role_count - cast_size)
+  end
     
 end

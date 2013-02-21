@@ -63,4 +63,13 @@ describe Actor do
     FactoryGirl.create(:actor_with_roles, :number_of_roles => number_of_roles).dvds.length.should be number_of_roles
   end
   
+  it 'should remove DVD associations on delete' do
+    role_count = 2
+    actor = FactoryGirl.create(:actor_with_roles, :number_of_roles => role_count)
+    dvd_role_count = DvdRole.count
+    actor.destroy
+    
+    DvdRole.count.should eq(dvd_role_count - role_count)
+  end
+  
 end

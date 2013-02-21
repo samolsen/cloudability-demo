@@ -5,6 +5,6 @@ class Actor < ActiveRecord::Base
   validates :name,    :presence => true, :uniqueness => true
   validates :gender,  :presence => true, :inclusion => { :in => Gender::ALL }
   
-  has_many :dvd_roles
+  has_many :dvd_roles, :dependent => :destroy
   has_many :dvds, :through => :dvd_roles
 end
