@@ -83,6 +83,11 @@ describe ActorsController do
         post :create, {:actor => valid_attributes}, valid_session
         response.should redirect_to(Actor.last)
       end
+      
+      it "redirects to new actor if submited with 'add another'" do
+        post :create, {:actor => valid_attributes, :commit => I18n.t(:create_and_add)}, valid_session
+        response.should redirect_to(new_actor_path)
+      end
     end
 
     describe "with invalid params" do

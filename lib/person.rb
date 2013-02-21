@@ -5,7 +5,7 @@ module Person
       attr_accessible :birth_date, :gender, :name
   
       validates :name,    :presence => true, :uniqueness => true
-      validates :gender,  :presence => true, :inclusion => { :in => Gender::ALL }
+      validates :gender,  :inclusion => { :in => Gender::ALL, :message => :must_be_selected }, :allow_nil => false
     end
   end
   

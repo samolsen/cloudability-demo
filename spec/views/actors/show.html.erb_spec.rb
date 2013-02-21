@@ -15,4 +15,10 @@ describe "actors/show" do
     rendered.should match(/Gender/)
   end
   
+  it 'renders list of movies' do
+    render
+    
+    assert_select "ul#actor_dvds"
+  end
+  
 end

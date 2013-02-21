@@ -3,3 +3,14 @@
 
 en:
   hello: "Hello world"
+  create: "Create"
+  create_and_add: "Create and add another"
+  
+  
+  activerecord:
+    errors:
+      models:
+        actor:
+          attributes:
+            gender:
+              must_be_selected: "must be selected"

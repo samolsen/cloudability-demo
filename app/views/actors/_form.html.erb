@@ -17,13 +17,18 @@
   </div>
   <div class="field">
     <%= f.label :birth_date %><br />
-    <%= f.date_select :birth_date %>
+    <%= f.text_field :birth_date, :class => 'datepicker' %>
   </div>
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= f.gender_select :gender %>
   </div>
   <div class="actions">
     <%= f.submit %>
+    
+    <% if @actor.new_record? %>
+      <%= f.submit t(:create_and_add) %>
+    <% end %>
+
   </div>
 <% end %>

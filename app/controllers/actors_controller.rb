@@ -44,7 +44,13 @@ class ActorsController < ApplicationController
 
     respond_to do |format|
       if @actor.save
-        format.html { redirect_to @actor, notice: 'Actor was successfully created.' }
+        format.html { 
+          if params[:commit] == t(:create_and_add)
+            redirect_to new_actor_path, notice: "#{@actor.name} was successfully created." 
+          else
+            redirect_to @actor, notice: 'Actor was successfully created.' 
+          end
+        }
         format.json { render json: @actor, status: :created, location: @actor }
       else
         format.html { render action: "new" }
