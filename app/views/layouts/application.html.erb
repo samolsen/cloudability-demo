@@ -8,6 +8,16 @@
 </head>
 <body>
 
+  <header>
+    <nav>
+      <ul>
+        <li><%= link_to 'DVDs', dvds_path %></li>
+        <li><%= link_to 'Actors', actors_path %></li>
+        <li><%= link_to 'Directors', directors_path %></li>
+      </ul>
+    </nav>
+  </header>
+
 <%= yield %>
 
 </body>
