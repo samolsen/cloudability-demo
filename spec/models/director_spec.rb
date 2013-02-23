@@ -62,5 +62,10 @@ describe Director do
     FactoryGirl.create(:director_with_dvds, :number_of_dvds => number_of_dvds).dvds.length.should be number_of_dvds
   end
   
+  it 'should allow mass assignement of DVDs' do
+    dvds = 3.times.map { FactoryGirl.create(:dvd) }
+    @director.update_attributes :dvd_ids => dvds.map {|d| d.id}
+    @director.dvds.should eq(dvds)
+  end
   
 end

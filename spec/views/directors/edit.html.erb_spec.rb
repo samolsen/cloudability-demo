@@ -15,6 +15,8 @@ describe "directors/edit" do
     assert_select "form", :action => directors_path(@director), :method => "post" do
       assert_select "input#director_name", :name => "director[name]"
       assert_select "input#director_gender", :name => "director[gender]"
+      
+      assert_select "select#director_dvd_ids", :name => "director[dvd_ids]", :'data-placeholder' => t("data_placeholders.choose_dvds")
     end
   end
 end
