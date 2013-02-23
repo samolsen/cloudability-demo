@@ -17,6 +17,10 @@ FactoryGirl.define do
         dvd.actors = FactoryGirl.create_list(:actor, evaluator.cast_size)
       end
     end
+    
+    factory :dvd_with_director do
+      director FactoryGirl.build(:director)
+    end
   
   end
 end

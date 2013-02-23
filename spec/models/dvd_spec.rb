@@ -48,6 +48,10 @@ describe Dvd do
     other_dvd.errors_on(:name).should_not be_empty
   end
   
+  it 'can have a director' do
+    FactoryGirl.create(:dvd_with_director).director.should be_a(Director)
+  end
+  
 end
 
 describe Dvd, 'cast' do

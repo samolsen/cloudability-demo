@@ -6,4 +6,6 @@ class Dvd < ActiveRecord::Base
   
   has_many :dvd_roles, :dependent => :destroy
   has_many :actors, :through => :dvd_roles
+  
+  belongs_to :director
 end
