@@ -24,7 +24,7 @@ describe DvdsController do
   # Dvd. As you add validations to Dvd, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    FactoryGirl.attributes_for(:dvd)
+    FactoryGirl.attributes_for(:dvd_with_cast_and_director, :cast_size => 2)
   end
 
   # This should return the minimal set of values that should be in the session
