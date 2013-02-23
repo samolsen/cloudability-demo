@@ -1,28 +1,5 @@
 <%= form_for(@director) do |f| %>
-  <% if @director.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@director.errors.count, "error") %> prohibited this director from being saved:</h2>
-
-      <ul>
-      <% @director.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :birth_date %><br />
-    <%= f.date_select :birth_date %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
-  </div>
+  <%= render :partial => 'persons/shared_form_fields', :locals => { :object => @director, :f => f } %>
   
   <div class="field">
     <%= f.label :dvd_ids, t(:dvds) %><br />

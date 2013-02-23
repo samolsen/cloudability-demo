@@ -14,7 +14,7 @@ describe "directors/new" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => directors_path, :method => "post" do
       assert_select "input#director_name", :name => "director[name]"
-      assert_select "input#director_gender", :name => "director[gender]"
+      assert_select "select#director_gender", :name => "director[gender]"
     end
   end
 end
