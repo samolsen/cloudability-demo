@@ -107,4 +107,19 @@ describe Dvd, 'search' do
     Dvd.search(:actor_id => dvd.actors.first.id).should include(dvd)
   end
   
+  it 'should ignore blank name' do
+    dvd = FactoryGirl.create(:dvd, :director => FactoryGirl.create(:director))
+    Dvd.search(:director_id => dvd.director_id, :name => '').should include(dvd)
+  end
+  
+  it 'should ignore blank directory id' do
+    dvd = FactoryGirl.create(:dvd)
+    Dvd.search(:name => dvd.name, :director_id => '').should include(dvd)
+  end
+  
+  it 'should ignore blank actor id' do
+    dvd = FactoryGirl.create(:dvd)
+    Dvd.search(:name => dvd.name, :actor_id => '').should include(dvd)
+  end
+  
 end

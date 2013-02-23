@@ -15,15 +15,15 @@ class Dvd < ActiveRecord::Base
       results = self.scoped
       
       if params
-        if params[:name]
+        unless params[:name].blank?
           results = results.where(:name => params[:name])
         end
       
-        if params[:director_id]
+        unless params[:director_id].blank?
           results = results.where(:director_id => params[:director_id]) 
         end
       
-        if params[:actor_id]
+        unless params[:actor_id].blank?
           results = results.joins(:dvd_roles).where(:dvd_roles => { :actor_id => params[:actor_id] })
         end
       end
