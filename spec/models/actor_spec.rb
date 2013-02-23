@@ -72,4 +72,9 @@ describe Actor do
     DvdRole.count.should eq(dvd_role_count - role_count)
   end
   
+  it 'should allow mass assignement of DVD ids' do
+    dvds = 3.times.map { FactoryGirl.create(:dvd) }
+    @actor.update_attributes :dvd_ids => dvds.map {|d| d.id}
+    @actor.dvds.should eq(dvds)
+  end
 end

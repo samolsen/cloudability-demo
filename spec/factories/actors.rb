@@ -11,7 +11,7 @@ FactoryGirl.define do
         number_of_roles 10
       end
       
-      after(:create) do |actor, evaluator|
+      after(:build) do |actor, evaluator|
         actor.dvds = FactoryGirl.create_list(:dvd, evaluator.number_of_roles)
       end
     end

@@ -7,11 +7,13 @@ en:
   create_and_add: "Create and add another"
   cast: "Cast"
   director: "Director"
+  dvds: "DVDs"
 
   
   data_placeholders:
     choose_the_cast: "Choose the cast"
     choose_the_director: "Choose the director"
+    choose_dvds: "Choose movies"
   
   activerecord:
     errors:

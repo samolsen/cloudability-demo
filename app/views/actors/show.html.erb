@@ -15,7 +15,7 @@
   <%= @actor.gender %>
 </p>
 
-<p>DVDs:</p>
+<p><%= t(:dvds) %></p>
 <ul id="actor_dvds">
   <% @actor.dvds.each do |dvd| %>
     <li><%= dvd.name %></li>

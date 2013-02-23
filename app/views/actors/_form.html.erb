@@ -23,6 +23,12 @@
     <%= f.label :gender %><br />
     <%= f.gender_select :gender %>
   </div>
+  
+  <div class="field">
+    <%= f.label :dvd_ids, t(:dvds) %><br />
+    <%= f.select :dvd_ids, Dvd.all.map {|dvd| [dvd.name, dvd.id] } , { :include_blank => true }, { :class => 'chzn-select', :multiple => true, :'data-placeholder' => t('data_placeholders.choose_dvds') } %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
     
