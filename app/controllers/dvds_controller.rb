@@ -2,7 +2,7 @@ class DvdsController < ApplicationController
   # GET /dvds
   # GET /dvds.json
   def index
-    @dvds = Dvd.all
+    @dvds = Dvd.search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +80,5 @@ class DvdsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

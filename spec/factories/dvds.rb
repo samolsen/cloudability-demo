@@ -27,9 +27,10 @@ FactoryGirl.define do
         cast_size 10
       end
       
+      
       after(:create) do |dvd, evaluator|
         dvd.actors = FactoryGirl.create_list(:actor, evaluator.cast_size)
-        director FactoryGirl.create(:director)
+        dvd.director { FactoryGirl.create(:director) }
       end
     end
   

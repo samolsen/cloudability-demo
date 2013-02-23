@@ -13,6 +13,8 @@ en:
   data_placeholders:
     choose_the_cast: "Choose the cast"
     choose_the_director: "Choose the director"
+    choose_an_actor: "Choose an actor"
+    choose_a_director: "Choose a director"
     choose_dvds: "Choose movies"
   
   activerecord:

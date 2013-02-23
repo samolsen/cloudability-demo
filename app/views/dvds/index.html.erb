@@ -1,5 +1,27 @@
 <h1>Listing dvds</h1>
 
+
+
+<%= form_for(:search, :url => dvds_path, :method => :get, :html => { :id => 'dvd_search_form' }) do |f| %>
+  <h3>Search DVDs</h3>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  
+  
+  <div class="field">
+    <%= f.label :director_id, t(:director) %><br />
+    <%= f.select :director_id, Director.all.map { |d| [d.name, d.id] }, { :include_blank => true }, { :class => 'chzn-select', :'data-placeholder' => t('data_placeholders.choose_a_director') } %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :actor_id, t(:cast) %><br />
+    <%= f.select :actor_id, Actor.all.map { |a| [a.name, a.id] }, { :include_blank => true }, { :class => 'chzn-select', :'data-placeholder' => t('data_placeholders.choose_an_actor') } %>
+  </div>
+  
+  <%= f.submit 'Search' %>
+
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>

@@ -160,5 +160,14 @@ describe DvdsController do
       response.should redirect_to(dvds_url)
     end
   end
+  
+  describe "GET index with search" do
+    it "assigns correct dvd as @dvds" do
+      FactoryGirl.create(:dvd) # shouldn't return this
+      dvd = FactoryGirl.create(:dvd_with_cast_and_director, :cast_size => 1)
+      get :index, { :search => {:name => dvd.name, :director_id => dvd.director_id, :actor_id => dvd.actors.first.id } }, valid_session
+      assigns(:dvds).should eq([dvd])
+    end
+  end
 
 end

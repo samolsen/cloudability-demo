@@ -77,4 +77,6 @@ describe Actor do
     @actor.update_attributes :dvd_ids => dvds.map {|d| d.id}
     @actor.dvds.should eq(dvds)
   end
+  
+  
 end

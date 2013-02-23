@@ -87,3 +87,24 @@ describe Dvd, 'cast' do
   end
     
 end
+
+
+describe Dvd, 'search' do
+  # I should be able to search for DVDs by name, director, or actor/actress.
+  
+  it 'should find DVDs by name' do
+    dvd = FactoryGirl.create(:dvd)
+    Dvd.search(:name => dvd.name).should include(dvd)
+  end
+  
+  it 'should find DVDs by director' do
+    dvd = FactoryGirl.create(:dvd, :director => FactoryGirl.create(:director))
+    Dvd.search(:director_id => dvd.director_id).should include(dvd)
+  end
+  
+  it 'should find DVDs by actor' do
+    dvd = FactoryGirl.create(:dvd, :actors => [FactoryGirl.create(:actor)])
+    Dvd.search(:actor_id => dvd.actors.first.id).should include(dvd)
+  end
+  
+end

@@ -8,4 +8,28 @@ class Dvd < ActiveRecord::Base
   has_many :actors, :through => :dvd_roles
   
   belongs_to :director
+  
+  class << self
+    
+    def search(params)
+      results = self.scoped
+      
+      if params
+        if params[:name]
+          results = results.where(:name => params[:name])
+        end
+      
+        if params[:director_id]
+          results = results.where(:director_id => params[:director_id]) 
+        end
+      
+        if params[:actor_id]
+          results = results.joins(:dvd_roles).where(:dvd_roles => { :actor_id => params[:actor_id] })
+        end
+      end
+      
+      results
+    end
+    
+  end
 end

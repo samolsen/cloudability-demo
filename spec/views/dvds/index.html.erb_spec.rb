@@ -23,4 +23,13 @@ describe "dvds/index" do
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
     assert_select "tr>td", :text => "Asin".to_s, :count => 2
   end
+  
+  it 'renders the search form' do
+    render
+    assert_select "form", :action => dvds_path, :method => "get" do
+      assert_select "input#search_name", :name => "search[name]"
+      assert_select "select#search_director_id", :name => "search[director_id]"
+      assert_select "select#search_actor_id", :name => "search[actor_id]"
+    end
+  end
 end
