@@ -12,3 +12,7 @@
  *= require jquery.ui.datepicker
  *= require_tree .
  */
+ 
+.chzn-select {
+  width: 300px;
+}

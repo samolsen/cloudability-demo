@@ -27,6 +27,17 @@
     <%= f.label :asin %><br />
     <%= f.text_field :asin %>
   </div>
+  
+  <div class="field">
+    <%= f.label :actor_ids, t(:cast) %><br />
+    <%= f.select :actor_ids, Actor.all.map { |a| [a.name, a.id] }, { :include_blank => true }, { :class => 'chzn-select', :multiple => true, :'data-placeholder' => t('data_placeholders.choose_the_cast') } %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :director_id, t(:director) %><br />
+    <%= f.select :director_id, Director.all.map { |d| [d.name, d.id] }, { :include_blank => true }, { :class => 'chzn-select', :'data-placeholder' => t('data_placeholders.choose_the_director') } %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -5,7 +5,13 @@ en:
   hello: "Hello world"
   create: "Create"
   create_and_add: "Create and add another"
+  cast: "Cast"
+  director: "Director"
+
   
+  data_placeholders:
+    choose_the_cast: "Choose the cast"
+    choose_the_director: "Choose the director"
   
   activerecord:
     errors:
