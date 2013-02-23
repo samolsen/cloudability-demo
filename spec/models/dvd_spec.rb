@@ -52,6 +52,12 @@ describe Dvd do
     FactoryGirl.create(:dvd_with_director).director.should be_a(Director)
   end
   
+  it 'should allow mass assignment of director id' do
+    director = FactoryGirl.create(:director)
+    @dvd.update_attributes :director_id => director.id
+    @dvd.director.should eq(director)
+  end
+  
 end
 
 describe Dvd, 'cast' do
@@ -69,6 +75,15 @@ describe Dvd, 'cast' do
     dvd.destroy
     
     DvdRole.count.should eq(dvd_role_count - cast_size)
+  end
+  
+  it 'should allow mass assignment of actor ids' do
+    actors = 3.times.map { FactoryGirl.create(:actor) }
+    params = FactoryGirl.attributes_for(:dvd)
+    params[:actor_ids]= actors.map { |actor| actor.id }
+    
+    dvd = Dvd.new(params)
+    dvd.actors.should eq(actors)
   end
     
 end
