@@ -7,6 +7,9 @@ describe "dvds/edit" do
       :summary => "MyText",
       :asin => "MyString"
     ))
+    
+    @actor    = assign(:actor, stub_model(Actor, {}))
+    @director = assign(:director, stub_model(Director, {}))
   end
 
   it "renders the edit dvd form" do

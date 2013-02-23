@@ -2,7 +2,7 @@
 
 
 
-<%= form_for(:search, :url => dvds_path, :method => :get, :html => { :id => 'dvd_search_form' }) do |f| %>
+<%= form_for(:search, :url => dvds_path, :method => :get, :html => { :class => 'outlined_form' }) do |f| %>
   <h3>Search DVDs</h3>
   <%= f.label :name %>
   <%= f.text_field :name %>

@@ -25,6 +25,8 @@ class DvdsController < ApplicationController
   # GET /dvds/new.json
   def new
     @dvd = Dvd.new
+    @actor = Actor.new
+    @director = Director.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class DvdsController < ApplicationController
   # GET /dvds/1/edit
   def edit
     @dvd = Dvd.find(params[:id])
+    @actor = Actor.new
+    @director = Director.new
   end
 
   # POST /dvds

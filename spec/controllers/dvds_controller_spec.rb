@@ -169,5 +169,35 @@ describe DvdsController do
       assigns(:dvds).should eq([dvd])
     end
   end
+  
+  describe "GET new" do
+    it "assigns a new actor as @actor" do
+      get :new, {}, valid_session
+      assigns(:actor).should be_a_new(Actor)
+    end
+  end
+  
+  describe "GET edit" do
+    it "assigns a new actor as @actor" do
+      dvd = Dvd.create! valid_attributes
+      get :edit, {:id => dvd.to_param}, valid_session
+      assigns(:actor).should be_a_new(Actor)
+    end
+  end
+  
+  describe "GET new" do
+    it "assigns a new director as @actor" do
+      get :new, {}, valid_session
+      assigns(:director).should be_a_new(Director)
+    end
+  end
+  
+  describe "GET edit" do
+    it "assigns a new director as @actor" do
+      dvd = Dvd.create! valid_attributes
+      get :edit, {:id => dvd.to_param}, valid_session
+      assigns(:director).should be_a_new(Director)
+    end
+  end
 
 end

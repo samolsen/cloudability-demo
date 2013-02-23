@@ -27,18 +27,33 @@
     <%= f.label :asin %><br />
     <%= f.text_field :asin %>
   </div>
+    
+    
+  
   
   <div class="field">
-    <%= f.label :actor_ids, t(:cast) %><br />
+    <%= f.label :actor_ids, t(:cast) %> <em>Missing actor? <a href="#new_actor_form">Add Another</a><br /></em>
     <%= f.select :actor_ids, Actor.all.map { |a| [a.name, a.id] }, { :include_blank => true }, { :class => 'chzn-select', :multiple => true, :'data-placeholder' => t('data_placeholders.choose_the_cast') } %>
   </div>
   
   <div class="field">
-    <%= f.label :director_id, t(:director) %><br />
+    <%= f.label :director_id, t(:director) %> <em>Missing director? <a href="#new_director_form">Add Another</a><br /></em>
     <%= f.select :director_id, Director.all.map { |d| [d.name, d.id] }, { :include_blank => true }, { :class => 'chzn-select', :'data-placeholder' => t('data_placeholders.choose_the_director') } %>
   </div>
   
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
+
+<%= form_for @actor, :remote => true, :html => { :'data-type' => 'json', :id => 'new_actor_form' } do |f| %>
+  <h3>Add an actor</h3>
+  <%= render :partial => 'persons/shared_form_fields', :locals => { :object => @actor, :f => f } %>
+  <%= f.submit %>
+<% end %>
+
+<%= form_for @director, :remote => true, :html => { :'data-type' => 'json', :id => 'new_director_form' } do |f| %>
+  <h3>Add director</h3>
+  <%= render :partial => 'persons/shared_form_fields', :locals => { :object => @actor, :f => f } %>
+  <%= f.submit %>
 <% end %>
